@@ -1,0 +1,18 @@
+# Turn on URL rewriting
+RewriteEngine On
+
+# Put your installation directory here:
+# If your URL is www.example.com/kohana/, use /kohana/
+# If your URL is www.example.com/, use /
+RewriteBase /
+
+# Protect application and system files from being viewed
+#RewriteRule ^(?:application|modules|system|\.(.*))\b / [PT]
+
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite all other URLs to index.php/URL
+RewriteRule .* index.php/$0 [PT]
+
